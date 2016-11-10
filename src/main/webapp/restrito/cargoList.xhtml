@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui" lang="pt-br">
+
+<h:body>
+
+	<ui:composition template="/restrito/template/template.xhtml">
+
+		<ui:define name="tituloJanela">Cargo</ui:define>
+
+		<ui:define name="nomePagina">Cadastro de Cargo</ui:define>
+
+		<f:metadata>
+			<f:event type="preRenderView" listener="#{cargoController.iniciarConversacao()}" />
+		</f:metadata>
+
+		<ui:define name="conteudoCorpo">
+
+			<!-- DataTables CSS -->
+			<link href="../resources/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet" />
+
+			<!-- DataTables Responsive CSS -->
+			<link href="../resources/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet" />
+
+
+
+			<h:form prependId="false" id="formCargo">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-lg-12">
+
+										<h:commandLink action="#{cargoController.novo()}" value="Novo" styleClass="btn btn-primary" />
+
+										<div class="panel-body">
+											<h:dataTable value="#{cargoController.cargos}" var="cargo" styleClass="table table-striped table-bordered table-hover"
+												id="dataTables-example">
+												<h:column>
+													<f:facet name="header">Id</f:facet>
+													<h:outputText value="#{cargo.id}" />
+												</h:column>
+												<h:column>
+													<f:facet name="header">Descrição</f:facet>
+													<h:outputText value="#{cargo.descricao}" />
+												</h:column>
+												<h:column>
+													<f:facet name="header">Ações</f:facet>
+													<div class="btn-group" role="group" aria-label="...">
+													  <button type="button" class="btn btn-default">Left</button>
+													  <button type="button" class="btn btn-default">Middle</button>
+													  <button type="button" class="btn btn-default">Right</button>
+													</div>
+												</h:column>
+											</h:dataTable>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</h:form>
+
+			<!-- DataTables JavaScript -->
+			<script type="text/javascript" src="../resources/vendor/datatables/js/jquery.dataTables.min.js"></script>
+			<script type="text/javascript" src="../resources/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+			<script type="text/javascript" src="../resources/vendor/datatables-responsive/dataTables.responsive.js"></script>
+
+			<script>
+	   		 $(document).ready(function() {
+	       		$('#dataTables-example').DataTable({
+	            responsive: true
+		        });
+		    });
+			</script>
+
+		</ui:define>
+
+	</ui:composition>
+
+
+
+</h:body>
+
+</html>

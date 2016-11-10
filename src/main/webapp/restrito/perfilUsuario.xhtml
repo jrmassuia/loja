@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+
+		<f:metadata>
+			<f:event type="preRenderView" listener="#{perfilUsuarioController.iniciarConversacao()}" />
+		</f:metadata>
+
+	<ui:composition template="/restrito/template/template.xhtml">
+	
+		<ui:define name="tituloJanela">Perfil Usuário</ui:define>
+		
+		<ui:define name="nomePagina">Perfil Usuário</ui:define>
+		
+		
+			<ui:define name="conteudoCorpo">
+				<h:form id="idPerfilUsuario">
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-lg-3">
+									<div class="form-group">											
+	                                     <label>Usuario</label>
+		                                 <h:inputText value="#{perfilUsuarioController.usuario.usuario}" styleClass="form-control" disabled="true" pt:placeholder="Usuário"/>
+	                                 </div>
+									<div class="form-group">											
+	                                     <label>Senha</label>
+		                                 <h:inputSecret value="#{perfilUsuarioController.senha}" styleClass="form-control" pt:placeholder="Senha"/>
+	                                 </div>
+									<div class="form-group">											
+	                                     <label>Nova Senha</label>
+		                                 <h:inputSecret value="#{perfilUsuarioController.novaSenha}" styleClass="form-control" pt:placeholder="Nova Senha"/>
+	                                 </div>
+	                                 <div class="form-group">											
+	                                     <label>Confirmar Senha</label>
+		                                 <h:inputSecret value="#{perfilUsuarioController.confirmarSenha}" styleClass="form-control" pt:placeholder="Confirmar Senha"/>
+	                                 </div>
+	                                 
+	                                 <p:commandLink styleClass="btn btn-primary" value="Salvar" action="#{perfilUsuarioController.salvar()}" update=":formMensagem"/>
+                              </div>
+						</div>
+					</div>
+				</h:form>
+			</ui:define>
+		
+		
+	</ui:composition>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      lang="pt-br" 
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"> 
+
+<h:head>
+
+	<meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <title>Login - Loja</title>
+	
+	<link rel="shortcut icon" href="#{request.contextPath}/favicon.ico" />
+	
+    <!-- Bootstrap Core CSS -->
+    <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- MetisMenu CSS -->
+    <link href="resources/vendor/metisMenu/metisMenu.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link href="resources/dist/css/sb-admin-2.css" rel="stylesheet"/>
+
+    <!-- Custom Fonts -->
+    <link href="resources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+</h:head> 
+<h:body>
+	
+	
+	 <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Bem vindo!</h3>
+                    </div>
+                    <div class="panel-body">
+                    	<h:form id="formLogin">
+					
+							<h:panelGroup rendered="#{sistemaController.messages.existemMensagemValidacao}">
+								<h:panelGroup rendered="#{sistemaController.messages.mensagemValidacaoError()}">                    		
+		                    		<div class="alert alert-danger alert-dismissable">
+										<h:commandLink action="#{sistemaController.messages.limparMensagemValidacao()}" value="x" type="button" styleClass="close"
+											data-dismiss="alert" aria-hidden="true" style="text-decoration: none;"/>
+										<h4>
+											<i class="icon fa fa-ban"></i> Alerta de Validação!
+										</h4>
+					
+										<h:messages showDetail="false" globalOnly="true" style="list-style-type: none;" />
+					
+									</div>
+		                    	</h:panelGroup>	
+	                    	</h:panelGroup>
+                    		
+                            <fieldset>
+                                <div class="form-group">
+                                	<h:inputText value="#{sistemaController.usuario}" styleClass="form-control" pt:placeholder="Usuário" onfocus="true"/>
+                                </div>
+                                <div class="form-group">
+                                <h:inputSecret value="#{sistemaController.senha}" styleClass="form-control" pt:placeholder="Senha"/>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input name="remember" type="checkbox" value="Remember Me">Lembrar-me</input>
+                                    </label>
+                                </div>
+                                <!-- Change this to a button or input when using this as a form -->
+								<h:commandLink action="#{sistemaController.autenticar()}" value="Acessar" styleClass="btn btn-lg btn-success btn-block" />                                
+                                
+                            </fieldset>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="resources/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="resources/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="resources/vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="resources/dist/js/sb-admin-2.js"></script>
+	
+	 
+
+</h:body> 
+</html>
